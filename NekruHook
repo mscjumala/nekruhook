@@ -1,0 +1,311 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local TopTabFrame = Instance.new("Frame")
+local Name = Instance.new("TextLabel")
+local Border = Instance.new("Frame")
+local MainscriptFrame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+local TextLabel_2 = Instance.new("TextBox")
+local TextButton_2 = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local TextLabel_3 = Instance.new("TextLabel")
+local TextButton_3 = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+local TextLabel_4 = Instance.new("TextLabel")
+
+local inputser = game:GetService("UserInputService")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(61, 61, 61)
+MainFrame.BorderColor3 = Color3.fromRGB(83, 83, 83)
+MainFrame.BorderSizePixel = 2
+MainFrame.Position = UDim2.new(0.109992251, 0, 0.207299277, 0)
+MainFrame.Size = UDim2.new(0, 180, 0, 200)
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+TopTabFrame.Name = "TopTabFrame"
+TopTabFrame.Parent = MainFrame
+TopTabFrame.BackgroundColor3 = Color3.fromRGB(61, 61, 61)
+TopTabFrame.BackgroundTransparency = 0.750
+TopTabFrame.BorderSizePixel = 0
+TopTabFrame.Size = UDim2.new(0, 180, 0, 20)
+
+Name.Name = "Name"
+Name.Parent = TopTabFrame
+Name.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Name.BackgroundTransparency = 1.000
+Name.Position = UDim2.new(0.0388888903, 0, 0, 0)
+Name.Size = UDim2.new(0, 173, 0, 21)
+Name.Font = Enum.Font.Arial
+Name.Text = "NekruHook"
+Name.TextColor3 = Color3.fromRGB(255, 255, 255)
+Name.TextSize = 14.000
+Name.TextXAlignment = Enum.TextXAlignment.Left
+
+Border.Name = "Border"
+Border.Parent = TopTabFrame
+Border.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+Border.BorderSizePixel = 0
+Border.Position = UDim2.new(0, 0, 1.04999995, 0)
+Border.Size = UDim2.new(0, 180, 0, 2)
+
+MainscriptFrame.Name = "MainscriptFrame"
+MainscriptFrame.Parent = MainFrame
+MainscriptFrame.BackgroundColor3 = Color3.fromRGB(61, 61, 61)
+MainscriptFrame.BorderColor3 = Color3.fromRGB(83, 83, 83)
+MainscriptFrame.BorderSizePixel = 2
+MainscriptFrame.Position = UDim2.new(0.0388888903, 0, 0.159999996, 0)
+MainscriptFrame.Size = UDim2.new(0, 164, 0, 161)
+
+TextLabel.Parent = MainscriptFrame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(0.0548780486, 0, -0.0559006222, 0)
+TextLabel.Size = UDim2.new(0, 72, 0, 16)
+TextLabel.Font = Enum.Font.GothamMedium
+TextLabel.Text = "Main"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 14.000
+
+TextButton.Parent = MainscriptFrame
+TextButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+TextButton.Position = UDim2.new(0.0548780486, 0, 0.0993788838, 0)
+TextButton.Size = UDim2.new(0, 30, 0, 30)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = ""
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextSize = 14.000
+TextButton.MouseButton1Up:Connect(function()
+	local target = TextLabel_2.Text
+	
+	local plr1 = game.Workspace:FindFirstChild(target)
+	local plr2 = game.Players.LocalPlayer.Character
+	
+	plr2.HumanoidRootPart.CFrame = plr1.HumanoidRootPart.CFrame * CFrame.new(0,2,0)
+end)
+
+
+UICorner.Parent = TextButton
+
+TextLabel_2.Parent = TextButton
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.Position = UDim2.new(1.36666667, 0, 0, 0)
+TextLabel_2.Size = UDim2.new(0, 105, 0, 30)
+TextLabel_2.Font = Enum.Font.GothamMedium
+TextLabel_2.Text = "Player tp"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextSize = 14.000
+TextLabel_2.TextXAlignment = Enum.TextXAlignment.Left
+TextLabel_2.MultiLine = false
+
+
+TextButton_2.Parent = MainscriptFrame
+TextButton_2.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+TextButton_2.Position = UDim2.new(0.0548780486, 0, 0.329192549, 0)
+TextButton_2.Size = UDim2.new(0, 30, 0, 30)
+TextButton_2.Font = Enum.Font.SourceSans
+TextButton_2.Text = ""
+TextButton_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_2.TextSize = 14.000
+TextButton_2.MouseButton1Up:Connect(function()
+	getgenv().Prediction =  (  0.01  )   -- [ PREDICTION: THIS IS ANARCHY IT DOESNT REQUIRE ANYTHING MORE THAN .01  ]
+
+	getgenv().FOV =  (  100  )   -- [ FOV RADIUS: Increases Or Decreases FOV Radius ]
+
+	getgenv().AimKey =  (  "q"  )  -- [ TOGGLE KEY: Toggles Silent Aim On And Off ]
+
+--[[
+		Do Not Edit Anything Beyond This Point. 
+]]
+
+	local placeholdval = false
+	if game.PlaceId == 5872075530 then
+		placeholdval = true
+	else
+		game:GetService("Players").LocalPlayer:Kick("LEARN TO READ SPED") task.wait(1)
+		while true do end
+	end
+
+	local SilentAim = true
+	local NeckOffSet = Vector3.new(0,-.5,0)
+	local Players = game:GetService("Players")
+	local LocalPlayer = game:GetService("Players").LocalPlayer
+	local Mouse = LocalPlayer:GetMouse()
+	local RunService = game:GetService("RunService")
+	local UserInputService = game:GetService("UserInputService")
+	local Camera = game:GetService("Workspace").CurrentCamera
+	local connections = getconnections(game:GetService("LogService").MessageOut)
+	for _, v in ipairs(connections) do
+		v:Disable()
+	end
+
+	getgenv = getgenv
+	Drawing = Drawing
+	getrawmetatable = getrawmetatable
+	getconnections = getconnections
+	hookmetamethod = hookmetamethod
+
+	local FOV_CIRCLE = Drawing.new("Circle")
+	FOV_CIRCLE.Visible = true
+	FOV_CIRCLE.Filled = false
+	FOV_CIRCLE.Thickness = 1
+	FOV_CIRCLE.Transparency = .4
+	FOV_CIRCLE.Color = Color3.new(0, 1, 0)
+	FOV_CIRCLE.Radius = getgenv().FOV
+	FOV_CIRCLE.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+
+	local Options = {
+		Torso = "HumanoidRootPart";
+		Head = "Head";
+	}
+
+	local function MoveFovCircle()
+		pcall(function()
+			local DoIt = true
+			spawn(function()
+				while DoIt do task.wait()
+					FOV_CIRCLE.Position = Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y)
+				end
+			end)
+		end)
+	end coroutine.wrap(MoveFovCircle)()
+
+	Mouse.KeyDown:Connect(function(KeyPressed)
+		if KeyPressed == (getgenv().AimKey:lower()) then
+			if SilentAim == false then
+				FOV_CIRCLE.Color = Color3.new(0, 1, 0)
+				SilentAim = true
+			elseif SilentAim == true then
+				FOV_CIRCLE.Color = Color3.new(1, 0, 0)
+				SilentAim = false
+			end
+		end
+	end)
+	Mouse.KeyDown:Connect(function(Rejoin)
+		if Rejoin == "=" then
+			local LocalPlayer = game:GetService("Players").LocalPlayer
+			game:GetService("TeleportService"):Teleport(game.PlaceId, LocalPlayer)
+		end
+	end)
+
+	getgenv().FORCE_REPEAT = {
+		"FORIINDEXRETURNADMININGAME";
+		"AimLockPsycho";
+		"proboy32007";
+		"autofarmaccountgrind";
+	}
+
+	local function InRadius()
+		local Target = nil
+		local Distance = 9e9
+		local Players = game:GetService("Players")
+		local LocalPlayer = game:GetService("Players").LocalPlayer
+		local Camera = game:GetService("Workspace").CurrentCamera
+		for _, v in pairs(Players:GetPlayers()) do 
+			if not table.find(getgenv().FORCE_REPEAT, v.Name) then
+				if v ~= LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Humanoid") and v.Character:FindFirstChild("Humanoid").Health > 0 then
+					local Enemy = v.Character	
+					local CastingFrom = CFrame.new(Camera.CFrame.Position, Enemy[Options.Torso].CFrame.Position) * CFrame.new(0, 0, -4)
+					local RayCast = Ray.new(CastingFrom.Position, CastingFrom.LookVector * 9000)
+					local World, ToSpace = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(RayCast, {LocalPlayer.Character:FindFirstChild("Head")})
+					local RootWorld = (Enemy[Options.Torso].CFrame.Position - ToSpace).magnitude
+					if RootWorld < 4 then		
+						local RootPartPosition, Visible = Camera:WorldToViewportPoint(Enemy[Options.Torso].Position)
+						if Visible then
+							local Real_Magnitude = (Vector2.new(Mouse.X, Mouse.Y) - Vector2.new(RootPartPosition.X, RootPartPosition.Y)).Magnitude
+							if Real_Magnitude < Distance and Real_Magnitude < FOV_CIRCLE.Radius then
+								Distance = Real_Magnitude
+								Target = Enemy
+							end
+						end
+					end
+				end
+			end
+		end
+		return Target
+	end
+
+	local oldIndex = nil
+	oldIndex = hookmetamethod(game, "__index", function(self, Index, Screw)
+		local Screw = oldIndex(self, Index)
+		local CALC = Mouse
+		local GG = "hit"
+		local MONCLER = GG
+		if SilentAim then
+			if self == CALC and (Index:lower() == MONCLER) then	
+				local Enemy = InRadius()
+				local Camera = game:GetService("Workspace").CurrentCamera
+				if Enemy ~= nil and Enemy[Options.Head] and Enemy:FindFirstChild("Humanoid") and Enemy:FindFirstChild("Humanoid").Health > 0 then
+					local Madox = Enemy[Options.Head]
+					local Formulate = Madox.CFrame + (Madox.AssemblyLinearVelocity * getgenv().Prediction + NeckOffSet)	
+					return (Index:lower() == MONCLER and Formulate)
+				end
+				return Screw
+			end
+		end
+		return oldIndex(self, Index, Screw)
+	end)
+end)
+
+UICorner_2.Parent = TextButton_2
+
+TextLabel_3.Parent = TextButton_2
+TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.BackgroundTransparency = 1.000
+TextLabel_3.Position = UDim2.new(1.36666667, 0, 0, 0)
+TextLabel_3.Size = UDim2.new(0, 105, 0, 30)
+TextLabel_3.Font = Enum.Font.GothamMedium
+TextLabel_3.Text = "Silent Aim (Q)"
+TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.TextSize = 14.000
+TextLabel_3.TextXAlignment = Enum.TextXAlignment.Left
+
+TextButton_3.Parent = MainscriptFrame
+TextButton_3.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+TextButton_3.Position = UDim2.new(0.0548780486, 0, 0.577639759, 0)
+TextButton_3.Size = UDim2.new(0, 30, 0, 30)
+TextButton_3.Font = Enum.Font.SourceSans
+TextButton_3.Text = ""
+TextButton_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_3.TextSize = 14.000
+TextButton_3.MouseButton1Up:Connect(function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(458.941, 533.44, 1159.32)
+end)
+
+UICorner_3.Parent = TextButton_3
+
+TextLabel_4.Parent = TextButton_3
+TextLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_4.BackgroundTransparency = 1.000
+TextLabel_4.Position = UDim2.new(1.36666667, 0, 0, 0)
+TextLabel_4.Size = UDim2.new(0, 105, 0, 30)
+TextLabel_4.Font = Enum.Font.GothamMedium
+TextLabel_4.Text = "Fly To Safe"
+TextLabel_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_4.TextSize = 14.000
+TextLabel_4.TextXAlignment = Enum.TextXAlignment.Left
+
+inputser.InputBegan:Connect(function(key, gpe)
+	if key.KeyCode == Enum.KeyCode.RightShift then
+		if MainFrame.Visible == true then
+			MainFrame.Visible = false
+		else
+			MainFrame.Visible = true
+		end
+	end
+end)
