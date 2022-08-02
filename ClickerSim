@@ -1,0 +1,152 @@
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))()
+local venyx = library.new("Venyx", 5013109572)
+
+-- themes
+local themes = {
+Background = Color3.fromRGB(24, 24, 24),
+Glow = Color3.fromRGB(0, 0, 0),
+Accent = Color3.fromRGB(10, 10, 10),
+LightContrast = Color3.fromRGB(20, 20, 20),
+DarkContrast = Color3.fromRGB(14, 14, 14),  
+TextColor = Color3.fromRGB(255, 255, 255)
+}
+
+-- first page
+local page = venyx:addPage("Main", 5012544693)
+local section1 = page:addSection("Main")
+local section2 = page:addSection("Random")
+local section3 = page:addSection("Teleports")
+
+--Variables
+
+_G.Tapping = false
+_G.Rebirting = false
+_G.Hatching = false
+
+_G.Rebirtingvalue = 0
+_G.Eggvalue = "nil"
+
+
+
+
+
+
+section1:addToggle("AutoClick", nil, function(value)
+    _G.Tapping = value
+    if value then
+        DoTap()
+    end
+end)
+
+section1:addToggle("AutoRebirth", nil, function(value)
+    _G.Rebirting = value
+    if value then
+        DoRebirth()
+    end
+end)
+
+section1:addToggle("AutoHatch", nil, function(value)
+    _G.Hatching = value
+    if value then
+        DoHatch()
+    end
+end)
+
+section1:addDropdown("RebirthAmount", {1,10,100,500,2000,2500}, function(text)
+    _G.Rebirtingvalue = text
+end)
+
+section1:addDropdown("EggType", {"20M Egg", "Starter", "Desert Egg", "Snow Egg"}, function(text)
+    _G.Eggvalue = text
+end)
+
+
+section2:addSlider("WalkSpeed", 16, 16, 300, function(value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+
+section2:addSlider("JumpPower", 50, 50, 300, function(value)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+end)
+
+
+
+section3:addButton("Spawn", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-73.4888763, 16.7034035, -482.174255, 0.447970361, 4.70062176e-08, -0.894048393, -4.07437248e-08, 1, 3.21618359e-08, 0.894048393, 2.20193126e-08, 0.447970361)
+end)
+
+section3:addButton("Snow", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-239.036453, 2934.40308, -467.286804, -0.35482657, 4.83940106e-08, 0.934932113, 5.59518387e-09, 1, -4.96385653e-08, -0.934932113, -1.23819648e-08, -0.35482657)
+end)
+
+section3:addButton("Desert", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-209.134598, 4225.50146, -776.264832, 0.570052683, 7.50084439e-08, -0.821608126, -1.07254948e-07, 1, 1.68784542e-08, 0.821608126, 7.84999301e-08, 0.570052683)
+end)
+
+section3:addButton("Death", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-318.227875, 5415.64111, -481.423706, 0.534450054, -1.11425322e-08, -0.845200062, 9.8278381e-09, 1, -6.96881575e-09, 0.845200062, -4.582005e-09, 0.534450054)
+end)
+
+section3:addButton("Beach", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-184.926224, 6872.43848, -494.99826, 0.429285347, -9.05863899e-08, -0.903168917, -1.24985314e-10, 1, -1.00357802e-07, 0.903168917, 4.31950156e-08, 0.429285347)
+end)
+
+section3:addButton("Mine", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-280.832031, 8366.03711, -481.8078, -0.226600811, 9.11480313e-08, -0.973987699, 2.89783273e-08, 1, 8.68404371e-08, 0.973987699, -8.54642135e-09, -0.226600811)
+end)
+
+
+-- second page
+local theme = venyx:addPage("Theme", 5012544693)
+local colors = theme:addSection("Colors")
+
+for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+colors:addColorPicker(theme, color, function(color3)
+venyx:setTheme(theme, color3)
+end)
+end
+
+-- load
+venyx:SelectPage(venyx.pages[1], true)
+
+
+function DoRebirth()
+    spawn(function()
+        while _G.Rebirting do
+local args = {
+    [1] = _G.Rebirtingvalue
+}
+
+game:GetService("ReplicatedStorage").Events.Rebirth:FireServer(unpack(args))
+
+            wait()
+        end
+    end)
+end
+
+
+function DoTap()
+    spawn(function()
+        while _G.Tapping do
+game:GetService("ReplicatedStorage").Events.Tap:FireServer()
+
+            wait()
+        end
+    end)
+end
+
+function DoHatch()
+    spawn(function()
+        while _G.Hatching do
+local args = {
+    [1] = {},
+    [2] = _G.Eggvalue,
+    [3] = 1
+}
+
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(unpack(args))
+
+            wait()
+        end
+    end)
+end
